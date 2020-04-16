@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 
 public class Streams {
 	// Function convert a List into Stream
-	private static <T> void getStream(List<T> list) {
+	static <T> void getStream(List<T> list) {
 
 		// Create stream object with the List
 		Stream<T> stream = list.stream();

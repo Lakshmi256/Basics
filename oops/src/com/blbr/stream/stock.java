@@ -1,24 +1,25 @@
 package com.blbr.stream;
 
+import java.util.List;
 import java.util.Scanner;
 
-public class stock<E> {
-	public Node<E> head;
-	public Node<E> last;
-	public Node<E> prev;
+public class stock {
+	public static Node head;
+	public static Node last;
+	public Node prev;
 
-	public Node<E> returnHead() {
+	public Node returnHead() {
 		return head;
 	}
 
-	public void add(E data) {
-		Node<E> node = new Node<E>();
-		node.data = data;
+	public static void add(int stocks) {
+		Node node = new Node();
+		node.data = stocks;
 		if (isEmpty()) {
 			node.next = null;
 			head = node;
 		} else {
-			Node<E> n = head;
+			Node n = head;
 			while (n.next != null) {
 				n = n.next;
 			}
@@ -27,7 +28,7 @@ public class stock<E> {
 		}
 	}
 
-	public boolean isEmpty() {
+	public static boolean isEmpty() {
 		if (head == null) {
 			return true;
 		} else
@@ -36,7 +37,7 @@ public class stock<E> {
 
 	public void remove(String data) {
 		boolean flag = false;
-		Node<E> n = head;
+		Node n = head;
 		if (isEmpty()) {
 			System.out.println("List is empty!!!");
 			flag = true;
@@ -49,7 +50,7 @@ public class stock<E> {
 			for (int i = 0; i < size(); i++) {
 				if (n.data.equals(data)) {
 					if (n == head) {
-						Node<E> x = n.next;
+						Node x = n.next;
 						System.out.println(n.data + " is deleted");
 						n = null;
 						flag = true;
@@ -80,7 +81,7 @@ public class stock<E> {
 	}
 
 	public int size() {
-		Node<E> n = head;
+		Node n = head;
 		int i = 0;
 		if (head == null) {
 			return 0;
@@ -99,16 +100,24 @@ public class stock<E> {
 		sc = new Scanner(System.in);
 	}
 
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		String a = null;
-//		do {
-		int ch;
-		System.out.println();
-		System.out.println("1.open a stock protofolio");
-		System.out.println("2.add items to stock protofolio");
-		System.out.println("3.exit");
-		System.out.println("your choice ");
-		ch = sc.nextInt();
+		
+		System.out.println("1.enter the company name");
+		String name=sc.nextLine();
+		System.out.println("2.add the number of stock holders");
+		long num=sc.nextLong();
+		List arr = null;
+	for (int i=0;i<num;i++) {
+		System.out.println("add the stock ");
+		int stocks=sc.nextInt();
+		
+		arr.add(stocks);
+		add(stocks);
+	}
+	Streams get=new Streams();
+	get.getStream(arr);
 	}
 
 }
